@@ -22,7 +22,7 @@ class Board
   }
 
   /// @brief Called on startup to configure the LED, Serial port & BLE game controller interface
-  void init()
+  void init(const char* deviceName)
   {
     // LED pin mode to output
     pinMode(PIN_LED, OUTPUT);
@@ -35,11 +35,7 @@ class Board
     Serial.begin(115200);
     Serial.println("Hello!");
 
-    // Use chip's unique ID to set the bluetooth device name
-    char deviceName[32] = {0};
-    sprintf(deviceName, "Gamepad %08X", ESP.getEfuseMac());
-    Serial.printf("Starting %s\n", deviceName);
-
+    // Init with device name
     std::string nameString(deviceName);
     gamepad->begin(nameString);
 

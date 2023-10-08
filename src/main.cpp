@@ -19,7 +19,7 @@ Board board(&gamepad);
 void setup() {
   // Runs once at startup to configure the board
 
-  board.init();
+  board.init("Who am I?");
 
   // Configure GPIO pin inputs
   pinMode(PIN_LEFT, INPUT_PULLUP);
